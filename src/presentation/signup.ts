@@ -1,4 +1,4 @@
-export class SignUpComponent {
+export class SignUpController {
   handle (httpRequest: any): any {
     if (!httpRequest.body.name) {
       return {

@@ -1,8 +1,8 @@
-import { SignUpComponent } from './signup'
+import { SignUpController } from './signup'
 
 describe('SignUp Controller', () => {
   test('Should return 400 if no name is passing throug body request', () => {
-    const sut = new SignUpComponent()
+    const sut = new SignUpController()
 
     const httpRequest = {
       body: {
@@ -19,7 +19,7 @@ describe('SignUp Controller', () => {
   })
 
   test('Should return 400 if no email is passing throug body request', () => {
-    const sut = new SignUpComponent()
+    const sut = new SignUpController()
 
     const httpRequest = {
       body: {
