@@ -1,7 +1,7 @@
 import { SignUpComponent } from './signup'
 
 describe('SignUp Controller', () => {
-  test('Should return 400 if no name is passing throw body request', () => {
+  test('Should return 400 if no name is passing throug body request', () => {
     const sut = new SignUpComponent()
 
     const httpRequest = {
@@ -16,5 +16,22 @@ describe('SignUp Controller', () => {
 
     expect(httpResponse.statusCode).toBe(400)
     expect(httpResponse.body).toEqual(new Error('Missing param: name'))
+  })
+
+  test('Should return 400 if no email is passing throug body request', () => {
+    const sut = new SignUpComponent()
+
+    const httpRequest = {
+      body: {
+        name: 'any_name',
+        password: 'any_password',
+        confirmation: 'any_password'
+      }
+    }
+
+    const httpResponse = sut.handle(httpRequest)
+
+    expect(httpResponse.statusCode).toBe(400)
+    expect(httpResponse.body).toEqual(new Error('Missing param: email'))
   })
 })
