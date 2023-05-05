@@ -4,12 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "jest",
     "test:staged": "jest"
-=======
-    "test": "jest"
->>>>>>> 15b584f (chore: add jest)
   },
   "repository": {
     "type": "git",
