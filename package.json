@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "jest",
     "test:staged": "jest"
+=======
+    "test": "jest"
+>>>>>>> 15b584f (chore: add jest)
   },
   "repository": {
     "type": "git",
@@ -19,6 +23,7 @@
   },
   "homepage": "https://github.com/thivalls/curso-typescript-udemy#readme",
   "devDependencies": {
+    "@types/jest": "^29.5.1",
     "@types/node": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "eslint": "^8.39.0",
@@ -29,7 +34,9 @@
     "eslint-plugin-promise": "^6.1.1",
     "git-commit-msg-linter": "^4.11.1",
     "husky": "^8.0.3",
+    "jest": "^29.5.0",
     "lint-staged": "^13.2.2",
+    "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
   }
 }
