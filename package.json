@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/thivalls/curso-typescript-udemy#readme",
   "devDependencies": {
-    "git-commit-msg-linter": "^4.11.1"
+    "@types/node": "^20.0.0",
+    "git-commit-msg-linter": "^4.11.1",
+    "typescript": "^5.0.4"
   }
 }
