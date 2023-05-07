@@ -17,7 +17,7 @@ const makeAddAccountStub = (): AddAccount => {
       return {
         id: 'valid_id',
         name: 'valid_name',
-        email: 'valid_email',
+        email: 'valid_email@mail.com',
         password: 'valid_password'
       }
     }
@@ -201,8 +201,47 @@ describe('SignUp Controller', () => {
     sut.handle(httpRequest)
     const { name, email, password } = httpRequest.body
 
-    expect(addSpy).toBeCalledWith({
-      name, email, password
+    expect(addSpy).toBeCalledWith({ name, email, password })
+  })
+
+  test('Should return 500 when addAccount throws some error', () => {
+    const { sut, addAccountStub } = makeSut()
+    jest.spyOn(addAccountStub, 'add').mockImplementationOnce(() => { throw new Error() })
+
+    const httpRequest = {
+      body: {
+        name: 'any_name',
+        email: 'any_email@mail.com',
+        password: 'any_password',
+        confirmation: 'any_password'
+      }
+    }
+    const httpResponse = sut.handle(httpRequest)
+
+    expect(httpResponse.statusCode).toBe(500)
+    expect(httpResponse.body).toEqual(new ServerError())
+  })
+
+  test('Should add new account and return correct AccountModel object with status 200', () => {
+    const { sut } = makeSut()
+
+    const httpRequest = {
+      body: {
+        name: 'valid_name',
+        email: 'valid_email@mail.com',
+        password: 'valid_password',
+        confirmation: 'valid_password'
+      }
+    }
+
+    const response = sut.handle(httpRequest)
+    expect(response.statusCode).toBe(200)
+    expect(response.body.id).not.toBeNull()
+    expect(response.body).toEqual({
+      id: 'valid_id',
+      name: 'valid_name',
+      email: 'valid_email@mail.com',
+      password: 'valid_password'
     })
   })
 })
