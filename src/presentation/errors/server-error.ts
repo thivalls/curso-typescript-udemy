@@ -1,5 +1,5 @@
 export class ServerError extends Error {
   constructor () {
-    super(`Invalid server error`)
+    super('Invalid server error')
   }
 }
