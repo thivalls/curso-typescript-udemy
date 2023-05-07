@@ -1,7 +1,6 @@
 import { SignUpController } from './signup'
 import { MissingParamError, InvalidParamError, ServerError } from '../errors'
 import { EmailValidator } from '../protocols'
-import { serverError } from '../helpers/http-helper'
 
 interface SutTypes {
   sut: SignUpController
@@ -10,7 +9,7 @@ interface SutTypes {
 
 const makeEmailValidator = (): EmailValidator => {
   class EmailValidatorStub implements EmailValidator {
-    isValid(email: string): boolean {
+    isValid (email: string): boolean {
       return true
     }
   }
@@ -134,7 +133,7 @@ describe('SignUp Controller', () => {
   test('Should call emailValidator with correct email', () => {
     const { sut, emailValidatorStub } = makeSut()
     const isValidSpy = jest.spyOn(emailValidatorStub, 'isValid')
-    
+
     const httpRequest = {
       body: {
         name: 'any_name',

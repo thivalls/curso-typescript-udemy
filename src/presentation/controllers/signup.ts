@@ -5,7 +5,7 @@ import { badResponse, serverError } from '../helpers/http-helper'
 export class SignUpController implements Controller {
   private readonly emailValidator: EmailValidator
 
-  constructor(emailValidator: EmailValidator){
+  constructor (emailValidator: EmailValidator) {
     this.emailValidator = emailValidator
   }
 
@@ -15,14 +15,14 @@ export class SignUpController implements Controller {
       for (const field of requiredFields) {
         if (!httpRequest.body[field]) {
           return badResponse(new MissingParamError(field))
-        
         }
       }
-      if(httpRequest.body.password !== httpRequest.body.confirmation) {
-        return badResponse(new InvalidParamError("confirmation"))
+      const { email, password, confirmation } = httpRequest.body
+      if (password !== confirmation) {
+        return badResponse(new InvalidParamError('confirmation'))
       }
-      if(!this.emailValidator.isValid(httpRequest.body.email)) {
-        return badResponse(new InvalidParamError("email"))
+      if (!this.emailValidator.isValid(email)) {
+        return badResponse(new InvalidParamError('email'))
       }
     } catch (error) {
       return serverError()
