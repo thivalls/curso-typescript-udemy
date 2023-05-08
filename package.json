@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/thivalls/curso-typescript-udemy#readme",
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/jest": "^29.5.1",
     "@types/node": "^20.0.0",
     "@types/validator": "^13.7.16",
@@ -42,6 +43,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "validator": "^13.9.0"
   }
 }
