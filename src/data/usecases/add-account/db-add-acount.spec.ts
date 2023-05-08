@@ -104,4 +104,23 @@ describe('DbAddAccount usecase', () => {
 
     await expect(promise).rejects.toThrow()
   })
+
+  test('Should return a correct AccountModel object when some account is created', async () => {
+    const { sut } = makeSut()
+    const accountInputData = {
+      name: 'valid_name',
+      email: 'valid_email@mail.com',
+      password: 'valid_password'
+    }
+    const expectAccount = {
+      id: 'valid_id',
+      name: 'valid_name',
+      email: 'valid_email@mail.com',
+      password: 'hashed_password'
+    }
+
+    const createdAccount = await sut.add(accountInputData)
+
+    expect(createdAccount).toEqual(expectAccount)
+  })
 })
